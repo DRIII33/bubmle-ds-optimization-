@@ -1,4 +1,4 @@
--- Marketplace Liquidity & Ecosystem Health Analysis
+-- Script 1: Marketplace Liquidity & Ecosystem Health
 WITH user_activity AS (
     SELECT 
         m.member_id,
@@ -6,8 +6,8 @@ WITH user_activity AS (
         COUNT(i.interaction_id) AS total_swipes,
         COUNTIF(i.interaction_type = 'Swipe_Right') AS right_swipes,
         AVG(i.sentiment_score) AS avg_kindness_score
-    FROM `bumble_data.dim_members` m
-    LEFT JOIN `bumble_data.fact_interactions` i ON m.member_id = i.actor_id
+    FROM `driiiportfolio.bumble_data.dim_members` m
+    LEFT JOIN `driiiportfolio.bumble_data.fact_interactions` i ON m.member_id = i.actor_id
     GROUP BY 1, 2
 )
 SELECT 
